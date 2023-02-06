@@ -75,16 +75,15 @@ Actor.destroy_all
 Role.destroy_all
 
 # Generate models and tables, according to the domain model.
-# TODO!
 
 # Insert data into the database that reflects the sample data shown above.
 # Do not use hard-coded foreign key IDs.
 
 new_studio = Studio.new
-new_studio ["name"] = "Warner Bros"
+new_studio ["name"] = "Warner Bros."
 new_studio.save
 
-WarnerBros = Studio.find_by({"name" => "Warner Bros"})
+WarnerBros = Studio.find_by({"name" => "Warner Bros."})
 
 new_movie = Movie.new
 new_movie ["title"] = "Batman Begins"
@@ -164,13 +163,14 @@ puts ""
 # Query the movies data and loop through the results to display the movies output.
 all_movies = Movie.all
 
-for movie in Movie.all
-    # puts movie.inspect
+for movie in all_movies
     title = movie["title"]
     year_released = movie["year_released"]
     rated = movie["rated"]
-    studio_id = movie["studio_id"]
-    puts "#{title} #{year_released} #{rated} #{studio_id}"
+    studio_id = Studio.find_by({"id" => movie["studio_id"]})
+    studio_name = studio_id ["name"]
+    
+    puts "#{title} #{year_released} #{rated} #{studio_name}"
 
 end
 
@@ -185,7 +185,7 @@ puts ""
 all_actors = Actor.all
 all_roles = Role.all
 
-for movie in Movie.all
+for movie in all_movies
     title = movie["title"]
     for actor in Actor.all
         actor = actor["name"]
