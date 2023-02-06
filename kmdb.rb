@@ -125,6 +125,37 @@ new_role ["character_name"] = "Rachel Dawes"
 new_role ["character_name"] = "Commissioner Gordon"
 new_role.save
 
+# -- The Dark Knight
+new_actor = Actor.new
+new_actor ["name"] = "Heath Ledger"
+new_actor ["name"] = "Aaron Eckhart"
+new_actor ["name"] = "Maggie Gyllenhaal"
+new_actor.save
+
+new_role = Role.new
+new_role ["character_name"] = "Bruce Wayne"
+new_role ["character_name"] = "Joker"
+new_role ["character_name"] = "Harvey Dent"
+new_role ["character_name"] = "Alfred"
+new_role ["character_name"] = "Rachel Dawes"
+new_role.save
+
+# -- The Dark Knight Rises
+new_actor = Actor.new
+new_actor ["name"] = "Tom Hardy"
+new_actor ["name"] = "Joseph Gordon-Levitt"
+new_actor ["name"] = "Anne Hathaway"
+new_actor.save
+
+new_role = Role.new
+new_role ["character_name"] = "Bruce Wayne"
+new_role ["character_name"] = "Commissioner Gordon"
+new_role ["character_name"] = "Bane"
+new_role ["character_name"] = "John Blake"
+new_role ["character_name"] = "Selina Kyle"
+new_role.save
+
+
 # Prints a header for the movies output
 puts "Movies"
 puts "======"
@@ -151,4 +182,17 @@ puts "========"
 puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
+all_actors = Actor.all
+all_roles = Role.all
+
+for movie in Movie.all
+    title = movie["title"]
+    for actor in Actor.all
+        actor = actor["name"]
+        for role in Role.all
+            role = role["character_name"]
+        puts "#{title} #{actor} #{role}"
+        end
+    end
+end
 
