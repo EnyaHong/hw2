@@ -290,10 +290,8 @@ puts "========"
 puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
-all_actors = Actor.all
-all_roles = Role.all
 
-for role in all_roles
+for role in Role.all
     movie = Movie.find_by({"id" => role["movie_id"]})
     actor = Actor.find_by({"id" => role["actor_id"]})
     puts "#{movie["title"]} #{actor["name"]} #{role["character_name"]}"
