@@ -299,14 +299,4 @@ for role in all_roles
     puts "#{movie["title"]} #{actor["name"]} #{role["character_name"]}"
 end
 
-# for movie in all_movies
-#     title = movie["title"]
-#     for actor in Actor.all
-#         actor = actor["name"]
-#         for role in Role.all
-#             role = role["character_name"]
-#         puts "#{title} #{actor} #{role}"
-#         end
-#     end
-# end
 
